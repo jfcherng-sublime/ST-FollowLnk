@@ -1,0 +1,30 @@
+[tool.black]
+line-length = 120
+target-version = ['py38']
+
+# regex
+exclude = '''
+/(
+  \.git |
+  plugin/libs |
+  stubs |
+  typings
+)/
+'''
+
+[tool.pyright]
+include = ["./"]
+exclude = [
+  "**/__pycache__/",
+  "**/node_modules/",
+  # git-related
+  "**/.git/",
+  "**/br-*/",
+  "**/branch-*/",
+]
+ignore = [
+  "**/.venv",
+  "plugin/libs/",
+]
+stubPath = "typings"
+pythonVersion = "3.8"
