@@ -4,7 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [1.0.1] - 2021-11-14
 
-- fix: support opening a dir
+- fix: support following `.lnk` to a folder
+- fix: do not follow `.lnk` which points to another `.lnk`
 
 ## [1.0.0] - 2021-11-14
 
