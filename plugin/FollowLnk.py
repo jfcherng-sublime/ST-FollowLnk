@@ -21,6 +21,10 @@ class FollowLnk(sublime_plugin.ViewEventListener):
             print(f"[{PACKAGE_NAME}] Unable to determinate the target path with information: {info}")
             return
 
+        # prevent from endless loop
+        if target_path.lower().endswith(".lnk"):
+            return
+
         if os.path.isfile(target_path):
             view_group = window.get_view_index(self.view)[0]
             self.view.close()
