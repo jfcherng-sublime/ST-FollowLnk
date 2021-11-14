@@ -1,4 +1,5 @@
 from .libs.pylnk import pylnk3
+import os
 import sublime_plugin
 
 
@@ -20,6 +21,12 @@ class FollowLnk(sublime_plugin.ViewEventListener):
             print(f"[{PACKAGE_NAME}] Unable to determinate the target path with information: {info}")
             return
 
-        view_group = window.get_view_index(self.view)[0]
-        self.view.close()
-        window.open_file(target_path, 0, view_group)
+        if os.path.isfile(target_path):
+            view_group = window.get_view_index(self.view)[0]
+            self.view.close()
+            window.open_file(target_path, 0, view_group)
+            return
+
+        if os.path.isdir(target_path):
+            # how to open a folder with ST APIs?
+            return
