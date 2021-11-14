@@ -32,5 +32,10 @@ class FollowLnk(sublime_plugin.ViewEventListener):
             return
 
         if os.path.isdir(target_path):
-            # how to open a folder with ST APIs?
+            project = window.project_data() or {}
+            project.setdefault("folders", [])
+            if target_path not in project["folders"]:
+                project["folders"].append({"path": target_path})
+            window.set_project_data(project)
+            self.view.close()
             return
