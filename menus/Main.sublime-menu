@@ -1,0 +1,50 @@
+[
+    {
+        "id": "preferences",
+        "children": [
+            {
+                "id": "package-settings",
+                "children": [
+                    {
+                        "caption": "FollowLnk",
+                        "children": [
+                            /*
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "Settings",
+                                "command": "edit_settings",
+                                "args": {
+                                    "base_file": "${packages}/FollowLnk/FollowLnk.sublime-settings",
+                                    "default": "{\n\t$0\n}\n"
+                                }
+                            },
+                            */
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "README",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/FollowLnk/README.md"
+                                }
+                            },
+                            {
+                                "caption": "CHANGELOG",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/FollowLnk/CHANGELOG.md"
+                                }
+                            },
+                            {
+                                "caption": "-"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -8,7 +8,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/jfcherng-sublime/ST-FollowLnk?style=flat-square&logo=github)](https://github.com/jfcherng-sublime/ST-FollowLnk/stargazers)
 [![Donate to this project using Paypal](https://img.shields.io/badge/paypal-donate-blue.svg?style=flat-square&logo=paypal)](https://www.paypal.me/jfcherng/5usd)
 
-`FollowLnk` is a Sublime Text plugin which opens the target file of a `.lnk` file.
+`FollowLnk` is a Sublime Text plugin which opens the target file of a `.lnk` (Windows shortcut) file
+instead of the `.lnk` file itself.
 
 ## Installation
 
