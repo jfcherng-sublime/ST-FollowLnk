@@ -1,4 +1,5 @@
 from .libs.pylnk import pylnk3
+from typing import Optional, Set
 import os
 import sublime
 import sublime_plugin
@@ -14,20 +15,10 @@ class FollowLnk(sublime_plugin.ViewEventListener):
 
     def on_load(self) -> None:
         if not (
-            # ...
             (window := self.view.window())
             and (path := self.view.file_name())
-            and path.lower().endswith(".lnk")
+            and (target_path := self._resolve_lnk(path))
         ):
-            return
-
-        info = pylnk3.parse(path)
-        if not (target_path := info.path):
-            print(f"[{PACKAGE_NAME}] Unable to determinate the target path with information: {info}")
-            return
-
-        # prevent from endless loop
-        if target_path.lower().endswith(".lnk"):
             return
 
         if os.path.isfile(target_path):
@@ -44,3 +35,22 @@ class FollowLnk(sublime_plugin.ViewEventListener):
             window.set_project_data(project)
             self.view.close()
             return
+
+        raise RuntimeError(f"[{PACKAGE_NAME}] Uh, what's this {path = }")
+
+    @classmethod
+    def _resolve_lnk(cls, path: str) -> Optional[str]:
+        is_parsed = False
+        seen_path: Set[str] = set((path,))
+        while cls._is_lnk(path):
+            if not (candidate := pylnk3.parse(path).path or ""):
+                break
+            if (path := candidate) in seen_path:
+                return None  # there is a LNK cycle
+            seen_path.add(path)
+            is_parsed = True
+        return path if is_parsed else None
+
+    @classmethod
+    def _is_lnk(cls, name: str) -> bool:
+        return name.lower().endswith(".lnk")
