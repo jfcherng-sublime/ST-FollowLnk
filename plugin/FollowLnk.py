@@ -1,5 +1,6 @@
 from .libs.pylnk import pylnk3
 import os
+import sublime
 import sublime_plugin
 
 
@@ -7,6 +8,10 @@ PACKAGE_NAME = __package__.partition(".")[0]
 
 
 class FollowLnk(sublime_plugin.ViewEventListener):
+    @classmethod
+    def is_applicable(cls, settings: sublime.Settings) -> bool:
+        return sublime.platform() == "windows"
+
     def on_load(self) -> None:
         if not (
             # ...
