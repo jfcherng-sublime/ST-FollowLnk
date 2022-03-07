@@ -1,16 +1,19 @@
-# Changelog
+# FollowLnk Changelog
 
-All notable changes to this project will be documented in this file.
+## 1.0.3
 
-## [1.0.2] - 2022-01-28
+- fix: modules should be reloaded when update plugin
+- refactor: simplify boot.py
+
+## 1.0.2
 
 - refactor: only run on Windows OS
 
-## [1.0.1] - 2021-11-14
+## 1.0.1
 
 - fix: support following `.lnk` to a folder
 - fix: do not follow `.lnk` which points to another `.lnk`
 
-## [1.0.0] - 2021-11-14
+## 1.0.0
 
 - initial release
