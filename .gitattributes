@@ -9,8 +9,6 @@
 .travis.yml export-ignore
 codecov.yml export-ignore
 docs/ export-ignore
-images/*.sh export-ignore
-images/FontAwesome/*.svg export-ignore
 mkdocs.yml export-ignore
 mypy.ini export-ignore
 pyproject.toml export-ignore
