@@ -8,7 +8,7 @@ import sublime_plugin
 PACKAGE_NAME = __package__.partition(".")[0]
 
 
-class FollowLnk(sublime_plugin.ViewEventListener):
+class FollowLnkViewEventListener(sublime_plugin.ViewEventListener):
     @classmethod
     def is_applicable(cls, settings: sublime.Settings) -> bool:
         return sublime.platform() == "windows"
