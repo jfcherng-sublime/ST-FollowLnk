@@ -1,9 +1,10 @@
-from .libs.pylnk import pylnk3
-from typing import Optional, Set
 import os
+from typing import Optional, Set
+
 import sublime
 import sublime_plugin
 
+from .libs.pylnk import pylnk3
 
 PACKAGE_NAME = __package__.partition(".")[0]
 
