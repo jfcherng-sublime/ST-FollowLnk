@@ -6,36 +6,38 @@ name: Python
 on:
   push:
     branches:
-      - "**"
+      - '**'
     paths:
-      - ".github/workflows/python.yml"
-      - "**.py"
-      - "**.pyi"
+      - '.github/workflows/python.yml'
+      - '**.py'
+      - '**.pyi'
+      - 'Makefile'
   pull_request:
     branches:
-      - "**"
+      - '**'
     paths:
-      - ".github/workflows/python.yml"
-      - "**.py"
-      - "**.pyi"
+      - '.github/workflows/python.yml'
+      - '**.py'
+      - '**.pyi'
+      - 'Makefile'
 
 jobs:
   job_lint:
-    name: Linting (Python ${{ matrix.python-version }})
+    name: ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: ["ubuntu-latest"]
-        python-version: ["3.8"]
+        os: ['ubuntu-latest']
+        python-version: ['3.8']
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: recursive
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -46,6 +48,4 @@ jobs:
 
       - name: Do linting
         run: |
-          mypy -p plugin
-          flake8 .
-          black --check .
+          make ci-check
