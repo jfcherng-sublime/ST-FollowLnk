@@ -1,5 +1,10 @@
 # FollowLnk Changelog
 
+## 1.0.4
+
+- fix: improve parsing LNK for non-ansi target path
+- refactor: replace `pylnk3` with `LnkParse3`
+
 ## 1.0.3
 
 - fix: modules should be reloaded when update plugin
