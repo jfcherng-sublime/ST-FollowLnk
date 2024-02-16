@@ -1,10 +1,14 @@
+from __future__ import annotations
+
 import os
-from typing import Optional, Set
+from collections.abc import Generator
 
 import sublime
 import sublime_plugin
 
-from .libs.pylnk import pylnk3
+from .libs.pylnk3 import Lnk
+from .libs.pylnk3.exceptions import FormatException
+from .libs.pylnk3.structures.extra_data import ExtraData_PropertyStoreDataBlock, PropertyStore
 
 PACKAGE_NAME = __package__.partition(".")[0]
 
@@ -37,21 +41,39 @@ class FollowLnkViewEventListener(sublime_plugin.ViewEventListener):
             self.view.close()
             return
 
-        raise RuntimeError(f"[{PACKAGE_NAME}] Uh, what's this {path = }")
+        raise RuntimeError(f"[{PACKAGE_NAME}] Uh, what's this: {path = }; {target_path = }")
 
     @classmethod
-    def _resolve_lnk(cls, path: str) -> Optional[str]:
-        is_parsed = False
-        seen_path: Set[str] = set((path,))
-        while cls._is_lnk(path):
-            if not (candidate := pylnk3.parse(path).path or ""):
-                break
-            if (path := candidate) in seen_path:
-                return None  # there is a LNK cycle
-            seen_path.add(path)
-            is_parsed = True
-        return path if is_parsed else None
+    def _resolve_lnk(cls, path: str) -> str | None:
+        # note that ".lnk" can't be a shortcut of ".lnk"
+        if lnk := cls._make_lnk(path):
+            return cls._extract_lnk_target(lnk)
+        return None
 
     @classmethod
-    def _is_lnk(cls, name: str) -> bool:
-        return name.lower().endswith(".lnk")
+    def _extract_extradata_propertystore(cls, lnk: Lnk) -> Generator[PropertyStore, None, None]:
+        if not lnk.extra_data:
+            return
+
+        for block in lnk.extra_data.blocks:
+            if isinstance(block, ExtraData_PropertyStoreDataBlock):
+                yield from block.stores
+
+    @classmethod
+    def _extract_lnk_target(cls, lnk: Lnk) -> str:
+        for store in cls._extract_extradata_propertystore(lnk):
+            # print(f"[DEBUG] {str(store) = }")
+            for name, value in store.properties:
+                if name == 30:  # System.Link.TargetDOSName (?)
+                    return str(value).partition(": ")[2].replace("\x00", "")  # this path is UTF-8
+
+        return lnk.path  # this path may in a wrong encoding
+
+    @staticmethod
+    def _make_lnk(path: str) -> Lnk | None:
+        if path.lower().endswith(".lnk"):
+            try:
+                return Lnk(path)
+            except FormatException:
+                return None
+        return None
