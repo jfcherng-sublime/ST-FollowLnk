@@ -6,12 +6,11 @@ from pathlib import Path
 
 import sublime
 import sublime_plugin
+from more_itertools import first_true
 
+from .constants import PLUGIN_NAME
 from .libs.LnkParse3.extra.metadata import Metadata, SerializedPropertyStorage, SerializedPropertyValueIntegerName
 from .libs.LnkParse3.lnk_file import LnkFile
-from .utils import first_true
-
-PACKAGE_NAME = __package__.partition(".")[0]
 
 
 class FollowLnkViewEventListener(sublime_plugin.ViewEventListener):
@@ -42,7 +41,7 @@ class FollowLnkViewEventListener(sublime_plugin.ViewEventListener):
             self.view.close()
             return
 
-        raise RuntimeError(f"[{PACKAGE_NAME}] Uh, what's this: {path = }; {target_path = }")
+        raise RuntimeError(f"[{PLUGIN_NAME}] Uh, what's this: {path = }; {target_path = }")
 
     @classmethod
     def _resolve_lnk(cls, path: str) -> str | None:
