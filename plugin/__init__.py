@@ -11,8 +11,8 @@ __all__ = (
 
 
 def plugin_loaded() -> None:
-    pass
+    """Executed when this plugin is loaded."""
 
 
 def plugin_unloaded() -> None:
-    pass
+    """Executed when this plugin is unloaded."""
