@@ -1,11 +1,12 @@
 # import all listeners and commands
-from .listener import FollowLnkViewEventListener
+from .listener import FollowLnkEventListener, FollowLnkViewEventListener
 
 __all__ = (
     # ST: core
     "plugin_loaded",
     "plugin_unloaded",
     # ST: listeners
+    "FollowLnkEventListener",
     "FollowLnkViewEventListener",
 )
 
