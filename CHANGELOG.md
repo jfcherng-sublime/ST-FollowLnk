@@ -1,5 +1,9 @@
 # FollowLnk Changelog
 
+## 1.0.6
+
+- feat: also works on init views
+
 ## 1.0.5
 
 Package Control v4 is required due to the use of `more-itertools` py38 dependency.
