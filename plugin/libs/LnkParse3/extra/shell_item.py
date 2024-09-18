@@ -1,6 +1,8 @@
-from ..extra.lnk_extra_base import LnkExtraBase
-from ..lnk_targets import LnkTargets
-from ..lnk_targets import TargetFactory
+import warnings
+
+from ...LnkParse3.extra.lnk_extra_base import LnkExtraBase
+from ...LnkParse3.lnk_targets import LnkTargets
+from ...LnkParse3.lnk_targets import TargetFactory
 
 """
 ------------------------------------------------------------------

@@ -1,8 +1,8 @@
 from struct import unpack
-from .decorators import must_be
-from .decorators import uuid
-from .decorators import filetime
-from .exceptions import LnkParserError
+from ..LnkParse3.decorators import must_be
+from ..LnkParse3.decorators import uuid
+from ..LnkParse3.decorators import filetime
+from ..LnkParse3.exceptions import LnkParserError
 
 """
 SHELL_LINK_HEADER:

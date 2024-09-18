@@ -1,8 +1,8 @@
 import struct
 import warnings
 
-from .info.local import Local
-from .info.network import Network
+from ..LnkParse3.info.local import Local
+from ..LnkParse3.info.network import Network
 
 
 class InfoFactory:

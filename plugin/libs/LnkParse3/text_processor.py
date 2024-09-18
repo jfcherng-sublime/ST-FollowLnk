@@ -5,6 +5,7 @@ than the size of the field that contains it, the bytes in the field following
 the terminating null character are undefined and can have any value. The
 undefined bytes MUST NOT be used.
 """
+
 import warnings
 
 
@@ -19,10 +20,14 @@ class TextProcessor:
             bin_string = b"".join(lst)
             try:
                 string = bin_string.decode(self.cp)
-            except UnicodeDecodeError as e:
-                string = bin_string.decode(self.cp, errors="replace")
-                msg = f"Error while decoding string `{string}` ({e})"
-                warnings.warn(msg)
+            except UnicodeDecodeError:
+                # Fallback to UTF-8 before giving up.
+                try:
+                    string = bin_string.decode("utf-8")
+                except UnicodeDecodeError as e:
+                    string = bin_string.decode(self.cp, errors="replace")
+                    msg = f"Error while decoding string `{string}` ({e})"
+                    warnings.warn(msg)
             yield string
 
         for char in binary:

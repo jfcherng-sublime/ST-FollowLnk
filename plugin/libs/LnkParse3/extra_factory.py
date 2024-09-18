@@ -2,17 +2,18 @@ import struct
 from struct import unpack
 import warnings
 
-from .extra.environment import Environment
-from .extra.console import Console
-from .extra.distributed_tracker import DistributedTracker
-from .extra.code_page import CodePage
-from .extra.special_folder import SpecialFolder
-from .extra.darwin import Darwin
-from .extra.icon import Icon
-from .extra.shim_layer import ShimLayer
-from .extra.metadata import Metadata
-from .extra.known_folder import KnownFolder
-from .extra.shell_item import ShellItem
+from ..LnkParse3.extra.environment import Environment
+from ..LnkParse3.extra.console import Console
+from ..LnkParse3.extra.distributed_tracker import DistributedTracker
+from ..LnkParse3.extra.code_page import CodePage
+from ..LnkParse3.extra.special_folder import SpecialFolder
+from ..LnkParse3.extra.darwin import Darwin
+from ..LnkParse3.extra.icon import Icon
+from ..LnkParse3.extra.shim_layer import ShimLayer
+from ..LnkParse3.extra.metadata import Metadata
+from ..LnkParse3.extra.known_folder import KnownFolder
+from ..LnkParse3.extra.shell_item import ShellItem
+from ..LnkParse3.extra.unknown import Unknown
 
 """
 ------------------------------------------------------------------
@@ -57,7 +58,7 @@ class ExtraFactory:
         # Allow for no accompanying data for a reported size, observed in malicious files
         try:
             sig = str(hex(self._rsig()))[2:]  # huh?
-            return self.EXTRA_SIGS.get(sig)
+            return self.EXTRA_SIGS.get(sig, Unknown)
         except struct.error as e:
             warnings.warn(f"Error while parsing extra's signature {e}")
             return None

@@ -5,7 +5,7 @@ import functools
 import sys
 import warnings
 
-from .utils import parse_uuid, parse_packed_uuid, parse_filetime, parse_dostime
+from ..LnkParse3.utils import parse_uuid, parse_packed_uuid, parse_filetime, parse_dostime
 
 
 def must_be(expected):

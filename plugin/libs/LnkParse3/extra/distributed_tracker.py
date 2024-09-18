@@ -1,7 +1,7 @@
 from struct import unpack
-from ..extra.lnk_extra_base import LnkExtraBase
-from ..decorators import must_be
-from ..decorators import uuid
+from ...LnkParse3.extra.lnk_extra_base import LnkExtraBase
+from ...LnkParse3.decorators import must_be
+from ...LnkParse3.decorators import uuid
 
 """
 ------------------------------------------------------------------

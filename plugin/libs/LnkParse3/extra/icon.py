@@ -1,4 +1,4 @@
-from ..extra.lnk_extra_base import LnkExtraBase
+from ...LnkParse3.extra.lnk_extra_base import LnkExtraBase
 
 """
 ------------------------------------------------------------------

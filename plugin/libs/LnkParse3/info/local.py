@@ -1,5 +1,5 @@
 from struct import unpack
-from ..lnk_info import LnkInfo
+from ...LnkParse3.lnk_info import LnkInfo
 
 """
 ------------------------------------------------------------------

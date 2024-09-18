@@ -2,7 +2,7 @@ import warnings
 
 import struct
 from struct import unpack
-from .text_processor import TextProcessor
+from ..LnkParse3.text_processor import TextProcessor
 
 """
 STRING_DATA:

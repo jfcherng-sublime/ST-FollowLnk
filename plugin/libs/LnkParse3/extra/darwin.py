@@ -1,5 +1,5 @@
-from ..decorators import uuid, packed_uuid
-from ..extra.lnk_extra_base import LnkExtraBase
+from ...LnkParse3.decorators import uuid, packed_uuid
+from ...LnkParse3.extra.lnk_extra_base import LnkExtraBase
 
 """
 ------------------------------------------------------------------

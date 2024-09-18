@@ -1,17 +1,17 @@
 from struct import unpack
 import warnings
 
-from .target.unknown import Unknown
-from .target.root_folder import RootFolder
-from .target.my_computer import MyComputer
-from .target.shell_fs_folder import ShellFSFolder
-from .target.network_location import NetworkLocation
-from .target.compressed_folder import CompressedFolder
-from .target.internet import Internet
-from .target.control_panel import ControlPanel
-from .target.printers import Printers
-from .target.common_places_folder import CommonPlacesFolder
-from .target.users_files_folder import UsersFilesFolder
+from ..LnkParse3.target.unknown import Unknown
+from ..LnkParse3.target.root_folder import RootFolder
+from ..LnkParse3.target.my_computer import MyComputer
+from ..LnkParse3.target.shell_fs_folder import ShellFSFolder
+from ..LnkParse3.target.network_location import NetworkLocation
+from ..LnkParse3.target.compressed_folder import CompressedFolder
+from ..LnkParse3.target.internet import Internet
+from ..LnkParse3.target.control_panel import ControlPanel
+from ..LnkParse3.target.printers import Printers
+from ..LnkParse3.target.common_places_folder import CommonPlacesFolder
+from ..LnkParse3.target.users_files_folder import UsersFilesFolder
 
 
 class TargetFactory:

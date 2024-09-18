@@ -1,6 +1,6 @@
 from struct import unpack
-from ..extra.lnk_extra_base import LnkExtraBase
-from ..decorators import uuid
+from ...LnkParse3.extra.lnk_extra_base import LnkExtraBase
+from ...LnkParse3.decorators import uuid
 from enum import IntEnum
 
 """
