@@ -1,5 +1,10 @@
 # FollowLnk Changelog
 
+## 1.0.7
+
+- chore: update LnkParse3 1.5.0
+- refactor: load listeners only when on Windows
+
 ## 1.0.6
 
 - feat: also works on init views
