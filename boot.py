@@ -1,3 +1,8 @@
+import sublime
+
+from .plugin.constants import PLUGIN_NAME
+
+
 def reload_plugin() -> None:
     import sys
 
@@ -7,6 +12,9 @@ def reload_plugin() -> None:
         del sys.modules[module_name]
 
 
-reload_plugin()
+if sublime.platform() == "windows":
+    reload_plugin()
 
-from .plugin import *  # noqa: F401, F403
+    from .plugin import *  # noqa: F401, F403
+else:
+    print(f"[{PLUGIN_NAME}][INFO] This plugin is only supported on Windows.")

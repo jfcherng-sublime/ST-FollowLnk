@@ -14,20 +14,12 @@ from .libs.LnkParse3.lnk_file import LnkFile
 
 
 class FollowLnkEventListener(sublime_plugin.EventListener):
-    @classmethod
-    def is_applicable(cls, settings: sublime.Settings) -> bool:
-        return sublime.platform() == "windows"
-
     def on_init(self, views: list[sublime.View]) -> None:
         for view in views:
             _handle_view(view)
 
 
 class FollowLnkViewEventListener(sublime_plugin.ViewEventListener):
-    @classmethod
-    def is_applicable(cls, settings: sublime.Settings) -> bool:
-        return sublime.platform() == "windows"
-
     def on_load(self) -> None:
         _handle_view(self.view)
 
