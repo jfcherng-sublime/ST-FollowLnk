@@ -17,3 +17,8 @@ This plugin is available on [Package Control][package-control] by the name of [F
 
 [followlnk]: https://packagecontrol.io/packages/FollowLnk
 [package-control]: https://packagecontrol.io
+
+## Implementation Details
+
+Actually, Sublime Text will still open the `.lnk` file first.
+And then this plugin opens the target file and closes the `.lnk` file.
