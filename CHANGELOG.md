@@ -1,5 +1,10 @@
 # FollowLnk Changelog
 
+## 1.0.8
+
+- fix: compatibility with ST 4201 (py313)
+- chore: use uv
+
 ## 1.0.7
 
 - chore: update LnkParse3 1.5.0
