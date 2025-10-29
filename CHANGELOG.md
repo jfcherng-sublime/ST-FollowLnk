@@ -1,5 +1,9 @@
 # FollowLnk Changelog
 
+## 1.0.9
+
+- fix: compatibility with ST 4201 (py313)
+
 ## 1.0.8
 
 - fix: compatibility with ST 4201 (py313)
