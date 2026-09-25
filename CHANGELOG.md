@@ -1,5 +1,9 @@
 # FollowLnk Changelog
 
+## 1.0.10
+
+- fix: add missing pyyaml dependency
+
 ## 1.0.9
 
 - fix: compatibility with ST 4201 (py313)
